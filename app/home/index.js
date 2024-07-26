@@ -41,16 +41,25 @@ const HomeScreen = () => {
 
     const handleChangeCategory = (cat) => {
         setActiveCategory(cat);
+        clearSearch();
+        setImages([]);
+        page = 1;
+        let params = {
+            page,
+        }
+        if(cat) params.category = cat;
+        fetchImages(params,false)
     }
 
     const handleSearch = (text) => {
         // console.log('searching for:', text);
         setSearch(text);
         if(text.length>2){
-            // search for this
+            // search for this text
             page = 1;
             setImages([]);
-            fetchImages({page, q: text})
+            setActiveCategory(null);
+            fetchImages({page, q: text},false)
         }
 
         if(text==""){
@@ -58,7 +67,9 @@ const HomeScreen = () => {
             page = 1;
             searchInputRef?.current?.clear();
             setImages([]);
-            fetchImages({page})
+            setActiveCategory(null);
+
+            fetchImages({page},false)
         }
     }
 
