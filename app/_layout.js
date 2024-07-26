@@ -11,12 +11,12 @@ const Layout = () => {
                     headerShown: false
                 }}
             />
-            {/* <Stack.Screen
+            <Stack.Screen
                 name='home/index'
                 options={{
                     headerShown: false
                 }}
-            /> */}
+            />
         </Stack>
     )
 }
