@@ -5,6 +5,9 @@ import { Feather, FontAwesome6, Ionicons } from '@expo/vector-icons';
 import { theme } from '../../constants/theme';
 import { hp, wp } from '../../helpers/common';
 import Categories from '../../components/categories';
+import { apiCall } from '../../api';
+import ImageGrid from '../../components/imageGrid';
+
 
 const HomeScreen = () => {
     const { top } = useSafeAreaInsets();
