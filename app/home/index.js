@@ -21,15 +21,19 @@ const HomeScreen = () => {
         fetchImages();
     },[]);
 
-    const fetchImages = async (params={page : 1}, append=flase)=>{
+    const fetchImages = async (params = { page: 1 }, append = false) => {
         let res = await apiCall(params);
-        if(res.success && res?.data?.hits){
-            if(append)
-            setImages([...images,...res.data.hits])
-            else
-            setImages([...res.data.hits])
+        if (res.success && res?.data?.hits) {
+            if (append) {
+                setImages([...images, ...res.data.hits]);
+                console.log([...images, ...res.data.hits]); // Log hình ảnh sau khi cập nhật
+            } else {
+                setImages([...res.data.hits]);
+                console.log([...res.data.hits]); // Log hình ảnh sau khi cập nhật
+            }
         }
     }
+
 
     const handleChangeCategory = (cat) =>{
         setActiveCategory(cat);
