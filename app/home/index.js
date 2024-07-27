@@ -9,6 +9,7 @@ import { apiCall } from '../../api';
 import ImageGrid from '../../components/imageGrid';
 import { debounce } from 'lodash'
 import FiltersModal from '../../components/filtersModal';
+import { useRouter } from 'expo-router';
 
 
 var page = 1;
@@ -24,6 +25,7 @@ const HomeScreen = () => {
     const searchInputRef = useRef(null);
     const modalRef = useRef(null);
     const scrollRef = useRef(null);
+    const router = useRouter();
     const [isEndReached, setIsEndReached] = useState(false);
 
     useEffect(() => {
@@ -256,7 +258,7 @@ const HomeScreen = () => {
                 {/* images masonry grid */}
                 <View>
                     {
-                        images.length > 0 && <ImageGrid images={images} />
+                        images.length > 0 && <ImageGrid images={images} router={router} />
                     }
                 </View>
                 {/* loading */}
